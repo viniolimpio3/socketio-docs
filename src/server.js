@@ -21,6 +21,4 @@ httpServer.listen(port, () => console.log(`Server running at ${process.env.HOST}
 
 const io = new Server(httpServer);
 
-io.on('connection', (socket) => {
-    console.log('Um cliente se conectou')
-})
+export default io;
