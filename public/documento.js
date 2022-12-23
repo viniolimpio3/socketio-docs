@@ -19,8 +19,8 @@ textEditor.addEventListener('keyup', () => { //Evento da DOM, não do socketIO
     })
 });
 
-function atualizaTextEditor(text){ 
+function updateTextEditor(text){ 
     textEditor.value = text
 }
 
-export { atualizaTextEditor }
+export { updateTextEditor }
