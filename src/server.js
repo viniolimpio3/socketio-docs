@@ -1,14 +1,19 @@
 import express from 'express';
-import dotenv from 'dotenv';
+import env from './config/env.js';
 import url from 'url';
 import path from 'path';
 import http from 'http';
+import db from './config/database.js';
 import { Server } from 'socket.io';
 
-dotenv.config();
+
+db.on('error', console.log.bind(console, 'Database error'));
+db.once('open', () => {
+    console.log("Conexão com o mongoDB realizada com sucesso.");
+});
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = env.port || 3000;
 
 const currentPath = url.fileURLToPath(import.meta.url);
 const publicDirectory = path.join(currentPath, '../..', 'public');
